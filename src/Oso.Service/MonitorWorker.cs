@@ -3,16 +3,23 @@ using Oso.Core;
 
 namespace Oso.Service;
 
+/// <summary>
+/// Runs the three modules inside one Windows Service: collect -> analyze -> persist/deliver.
+/// Separate async loops let monitoring continue while Gmail is unavailable or an email is being sent.
+/// </summary>
 public sealed class MonitorWorker(WindowsCollector collector, LoginAnalyzer analyzer,
     DurableReporter reporter, ReportingOptions options, ILogger<MonitorWorker> logger) : BackgroundService
 {
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
+        // One cancellation source stops all loops when Windows stops the service or a loop fails.
         using var stop = CancellationTokenSource.CreateLinkedTokenSource(stoppingToken);
+        // This queue connects Module 1 to Module 2. FullMode.Wait slows the producer when full.
         var channel = Channel.CreateBounded<LoginEvent>(new BoundedChannelOptions(4096)
         {
             FullMode = BoundedChannelFullMode.Wait, SingleReader = true, SingleWriter = true
         });
+        // Start collection, analysis and delivery; await coordinates their lifetimes without busy waiting.
         var tasks = new[] { Collect(), Analyze(), Deliver() };
         try
         {
@@ -30,11 +37,13 @@ public sealed class MonitorWorker(WindowsCollector collector, LoginAnalyzer anal
             throw;
         }
 
+        // MODULE 1: complete the output queue when the collector stops so analysis is not left waiting.
         async Task Collect()
         {
             try { await collector.RunAsync(channel.Writer, stop.Token); }
             finally { channel.Writer.TryComplete(); }
         }
+        // MODULE 2: one consumer owns the analyzer's history; no concurrent access to that history.
         async Task Analyze()
         {
             // An idle timer expires history even when no new events arrive.
@@ -46,16 +55,19 @@ public sealed class MonitorWorker(WindowsCollector collector, LoginAnalyzer anal
                 {
                     if (!await channel.Reader.WaitToReadAsync(wait.Token)) break;
                 }
+                // A five-second idle timeout means "prune history", not "stop the service".
                 catch (OperationCanceledException) when (!stop.IsCancellationRequested) { }
                 analyzer.Prune(DateTimeOffset.UtcNow);
                 while (channel.Reader.TryRead(out var item))
                 {
                     var alert = analyzer.Process(item, DateTimeOffset.UtcNow);
+                    // Save alerts to disk here; Gmail work happens in Deliver(), not in this loop.
                     if (alert is not null && await reporter.AcceptAsync(alert, stop.Token))
                         logger.LogInformation("Queued alert {AlertId} from Security record {RecordId}.", alert.Id, item.RecordId);
                 }
             }
         }
+        // MODULE 3: periodically send queued alerts whose initial/retry time has arrived.
         async Task Deliver()
         {
             while (!stop.IsCancellationRequested)
