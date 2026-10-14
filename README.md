@@ -21,17 +21,16 @@ Supporting evidence includes already collected related account/IP events and sam
 
 Memory history expires after **10 minutes**, including during idle periods. Windows logs are never deleted. Pending delivery evidence is retained on disk until successful delivery; delivered records retain only a small identity marker for 24 hours to prevent duplicate alerts during restarts.
 
-## Build and test
+## Build and publish
 
 Install the .NET 10 SDK. From the repository root:
 
 ```powershell
-dotnet restore OSO.sln --locked-mode
-dotnet test tests/Oso.Tests/Oso.Tests.csproj -c Release --no-restore
-dotnet build OSO.sln -c Release --no-restore
+dotnet restore src/Oso.Service/Oso.Service.csproj --locked-mode
+dotnet build src/Oso.Service/Oso.Service.csproj -c Release --no-restore
 ```
 
-The core tests run on Linux or Windows. Event Log collection, DPAPI and Windows Service execution require Windows.
+Build and publish can run on Linux or Windows. Event Log collection, DPAPI and Windows Service execution require Windows. The repository contains application source, build/deployment files and documentation; tests and CI files have been removed.
 
 Publish a self-contained Windows x64 executable (the deployment machine needs no .NET runtime):
 

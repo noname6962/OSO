@@ -5,7 +5,7 @@ using Oso.Service;
 
 if (!OperatingSystem.IsWindows())
 {
-    Console.Error.WriteLine("OSO service requires Windows. Run the Oso.Tests project for platform-independent validation.");
+    Console.Error.WriteLine("OSO service requires Windows. Build or publish on Linux, then run the executable on Windows.");
     return 1;
 }
 

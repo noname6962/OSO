@@ -23,9 +23,9 @@ Install the service following README.md, confirm configuration validation succee
 5. **Startup replay and deduplication:** Stop the service, generate a fresh threshold sequence, then start it within ten minutes. Verify the sequence is analyzed. Restart again and confirm records already delivered do not produce another email. New qualifying records must still produce alerts.
 6. **Email recovery:** Temporarily block outbound SMTP for this executable using a reversible test firewall rule. Generate a qualifying event and confirm its warning and pending `ProgramData\OSO\outbox` record exist. Remove only your test rule. Verify email delivery resumes; the existing warning is not rewritten during an ordinary retry.
 7. **Restart recovery:** With an email pending, restart the service, restore SMTP access, and verify the persisted alert is delivered with its original ID/evidence.
-8. **Retention:** Wait more than ten minutes with no events. Automated tests verify idle history expiry; on Windows, verify old records are excluded from evidence in a later alert and stored warnings remain available. Delivered outbox records contain metadata only; pending deliveries may still contain evidence.
+8. **Retention:** Wait more than ten minutes with no events. Verify old records are excluded from evidence in a later alert and stored warnings remain available. Delivered outbox records contain metadata only; pending deliveries may still contain evidence.
 
-The cross-platform test suite validates multi-account/IP rules using fixtures. Real IP-based Windows validation needs controlled network logins to this VM from the corresponding distinct source addresses; local interactive logins often have no source IP. Do not claim those Windows paths verified without such records.
+Real IP-based Windows validation needs controlled network logins to this VM from the corresponding distinct source addresses; local interactive logins often have no source IP. Check five failures from one IP across at least three accounts and five failures against one account from at least three IPs. Verify corresponding warnings and emails. Do not claim those Windows paths verified without such records.
 
 ## Troubleshooting
 
@@ -35,4 +35,4 @@ The cross-platform test suite validates multi-account/IP rules using fixtures. R
 - Corrupt state: stop the service and preserve the affected outbox files before investigation. Do not delete pending evidence just to make the service start.
 - Recovery cannot replay downtime exceeding ten minutes. Extend the configured lookback/retention if you need a longer outage window; this MVP has no permanent Security-log cursor.
 
-Record actual pass/fail results, event IDs and alert IDs for your VM. Compilation and unit tests in a Linux cloud machine do not establish Windows functional readiness.
+Record actual pass/fail results, event IDs and alert IDs for your VM. Compilation in a Linux cloud machine does not establish Windows functional readiness.
