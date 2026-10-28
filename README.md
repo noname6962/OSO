@@ -1,3 +1,5 @@
+<!-- Główny opis działania, reguł, budowania, instalacji i konfiguracji. -->
+
 # OSO login monitor
 
 A .NET 10 Windows Service for a local Windows 11 VM. It reads Security events **4624, 4625, 4634, 4647 and 4672**, detects suspicious login patterns, writes supporting evidence to **OSO-Warnings**, and sends Gmail notifications. Rules indicate suspicion, not proof of malicious activity.

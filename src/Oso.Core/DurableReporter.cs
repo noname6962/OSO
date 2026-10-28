@@ -1,3 +1,5 @@
+// Zapis alertów na dysku, postęp dostarczania i ponawianie wysyłki. Najpierw zapisuje ostrzeżenie w Windows, potem wysyła e-mail. Po dostarczeniu usuwa z pliku treść dowodów, zostawiając tymczasowy znacznik zapobiegający powtórnej wysyłce po restarcie.
+
 using System.Text.Json;
 
 namespace Oso.Core;

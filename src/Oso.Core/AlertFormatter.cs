@@ -1,3 +1,5 @@
+// Buduje czytelny opis alertu i XML z dowodami. Dzieli zbyt długie ostrzeżenia na ponumerowane wpisy, żeby zmieściły się w dzienniku Windows.
+
 using System.Text;
 
 namespace Oso.Core;

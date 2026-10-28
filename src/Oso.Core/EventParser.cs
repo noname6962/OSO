@@ -1,3 +1,5 @@
+// Zamienia XML Windows na `LoginEvent`. Odczytuje konto, domenę, SID, IP, typ logowania i identyfikator sesji. Normalizuje nazwy i adresy, a brakujące pola zostawia jako brakujące. Zachowuje oryginalny XML.
+
 using System.Globalization;
 using System.Net;
 using System.Xml;

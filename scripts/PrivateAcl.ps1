@@ -1,3 +1,5 @@
+﻿# Wspólna funkcja ustawiająca prawa do plików i katalogów. Zostawia dostęp kontu SYSTEM i administratorom. Korzystają z niej skrypty instalacji i konfiguracji hasła.
+
 # Shared installer helper: replace the path's permissions with access for only
 # SYSTEM (the service account) and Administrators. Other local users must not
 # modify privileged service binaries or read the encrypted credential/outbox.

@@ -1,3 +1,5 @@
+// Dokładne wersje i sumy kontrolne zależności usługi, w tym zależności pośrednich. Dzięki temu odtworzenie buildu nie wybiera przypadkowo innych wersji pakietów.
+
 {
   "version": 1,
   "dependencies": {

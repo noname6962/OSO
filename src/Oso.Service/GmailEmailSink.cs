@@ -1,3 +1,5 @@
+// Odszyfrowuje zapisane hasło aplikacji, łączy się z SMTP przez TLS i wysyła alert z załącznikiem XML. Błąd oddaje do `DurableReporter`, który zajmuje się ponowieniem.
+
 using System.Security.Cryptography;
 using System.Text;
 using MailKit.Net.Smtp;

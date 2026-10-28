@@ -1,3 +1,5 @@
+// Odczytuje lokalny dziennik Security dla ID 4624, 4625, 4634, 4647 i 4672. Najpierw włącza obserwację nowych wpisów, potem odczytuje ostatnie dziesięć minut. Buforuje nowe zdarzenia podczas odczytu historii, żeby nie zostawić przerwy w monitorowaniu.
+
 using System.Diagnostics.Eventing.Reader;
 using System.Threading.Channels;
 using Oso.Core;

@@ -1,3 +1,5 @@
+# Wyklucza z Gita wyniki kompilacji, paczki wdrożeniowe, lokalną konfigurację i pliki certyfikatów `.pfx`.
+
 **/bin/
 **/obj/
 artifacts/

@@ -1,3 +1,5 @@
+// Wspólne struktury danych: `LoginEvent` to odczytane zdarzenie, `RuleMatch` to spełniona reguła z licznikami, a `SecurityAlert` to alert z dowodami. Zawiera też `DetectionOptions`, czyli progi i okna czasowe. Wylicza stały identyfikator alertu na podstawie zdarzenia.
+
 using System.Security.Cryptography;
 using System.Text;
 

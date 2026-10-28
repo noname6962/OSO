@@ -1,3 +1,5 @@
+<!-- Lista testów do wykonania na Windows 11: progi, logowania, wysyłka, restart i odzyskiwanie po błędach. -->
+
 # Windows 11 functional validation
 
 Run these checks on the local test VM. Use a disposable test account and ensure you have a working administrator session; account lockout policies can interrupt failure generation. Do not test against other machines.

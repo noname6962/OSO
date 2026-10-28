@@ -1,3 +1,5 @@
+<!-- Definicja biblioteki .NET 10. Pozostały projekt korzysta z niej przez referencję. -->
+
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup><TargetFramework>net10.0</TargetFramework></PropertyGroup>
 </Project>

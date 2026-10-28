@@ -1,3 +1,5 @@
+// Sprawdza powtarzające się nieudane logowania, jeden IP atakujący wiele kont, wiele IP atakujących jedno konto i sukces po podejrzanych niepowodzeniach. Trzyma ostatnie zdarzenia w pamięci, usuwa stare i dołącza powiązane rekordy do alertu. Pomija ponowne odczytanie tego samego zdarzenia.
+
 namespace Oso.Core;
 
 /// <summary>

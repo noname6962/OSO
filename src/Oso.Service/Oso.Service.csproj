@@ -1,3 +1,5 @@
+<!-- Definicja aplikacji dla Windows. Łączy ją z `Oso.Core` i bibliotekami do usług Windows, Event Log, szyfrowania oraz poczty. Wymusza poprawioną wersję pakietu kryptograficznego używanego przez zależności pocztowe. -->
+
 <Project Sdk="Microsoft.NET.Sdk.Worker">
   <PropertyGroup>
     <TargetFramework>net10.0-windows</TargetFramework>

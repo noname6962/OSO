@@ -1,3 +1,5 @@
+<!-- Zapis wykonanych wcześniej sprawdzeń i ich ograniczeń. Wynik 36 testów dotyczy historycznej wersji sprzed usunięcia testów z repozytorium. -->
+
 # Implementation validation
 
 The initial implementation was verified in the Linux cloud workspace using .NET SDK **10.0.402**. This historical record describes checks performed before the repository was reduced to application/build/deployment files and documentation:

@@ -1,3 +1,5 @@
+// Punkt wejścia. Wczytuje konfigurację, sprawdza dostęp do Security, rejestrację dziennika ostrzeżeń i możliwość odszyfrowania hasła. Rejestruje zależności, zakłada blokadę drugiej instancji i uruchamia usługę. Obsługuje też `--validate-config`.
+
 using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using Oso.Core;

@@ -1,3 +1,5 @@
+// Zapisuje przygotowaną treść do źródła `OsoLoginMonitor`, przypisanego do dziennika `OSO-Warnings`. Ostrzeżenia mają ID 1000.
+
 using System.Diagnostics;
 using Oso.Core;
 

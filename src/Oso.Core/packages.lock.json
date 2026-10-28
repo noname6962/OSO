@@ -1,3 +1,5 @@
+// Wersje i sumy kontrolne zależności tego projektu. Utrzymuje go NuGet.
+
 {
   "version": 1,
   "dependencies": {

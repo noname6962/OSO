@@ -1,3 +1,5 @@
+﻿# Zatrzymuje usługę i usuwa jej rejestrację. Zostawia pliki aplikacji, ostrzeżenia, konfigurację, hasło i oczekujące alerty.
+
 <#
 .SYNOPSIS
 Stop the monitor and remove its Windows Service registration.

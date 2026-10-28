@@ -1,3 +1,5 @@
+// Spina trzy moduły. Kolektor zapisuje do kolejki, analizator ją odczytuje, a osobna pętla dostarcza zapisane alerty. Obsługuje zatrzymanie i błędy pętli. Usuwa stare zdarzenia z pamięci również wtedy, gdy nie pojawiają się nowe.
+
 using System.Threading.Channels;
 using Oso.Core;
 

@@ -1,3 +1,5 @@
+﻿# Buduje paczkę Windows x64 do `artifacts/service`. Dołącza runtime .NET, więc na maszynie uruchamiającej gotową paczkę nie trzeba go instalować osobno.
+
 <#
 .SYNOPSIS
 Build the Windows x64 application and include the .NET runtime needed to run it.

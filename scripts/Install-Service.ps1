@@ -1,3 +1,5 @@
+﻿# Kopiuje gotową paczkę, zapisuje lokalne ustawienia adresów, rejestruje dziennik i usługę. Ustawia automatyczny start oraz restart po awarii. Na końcu uruchamia usługę. Wymaga przygotowanego hasła i pustego katalogu instalacyjnego.
+
 <#
 .SYNOPSIS
 Install and start the login monitor on the local Windows VM.

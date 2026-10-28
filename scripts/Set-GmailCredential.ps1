@@ -1,3 +1,5 @@
+﻿# Pyta o hasło aplikacji Gmail i szyfruje je mechanizmem Windows DPAPI dla tej maszyny. Przygotowuje katalog danych i ogranicza dostęp do niego. Nadpisanie istniejącego hasła wymaga `-ReplaceExisting`.
+
 <#
 .SYNOPSIS
 Prompt for a Gmail App Password and save it encrypted for the local Windows service.

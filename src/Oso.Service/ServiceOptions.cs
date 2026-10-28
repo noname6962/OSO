@@ -1,3 +1,5 @@
+// Klasy ustawień zapisu ostrzeżeń i SMTP oraz sprawdzanie ich poprawności. Nie przechowuje hasła wprost — tylko ścieżkę do zaszyfrowanego pliku.
+
 using MimeKit;
 
 namespace Oso.Service;
